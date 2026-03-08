@@ -7,9 +7,10 @@ class Anin < Formula
 
   depends_on "rust" => :build
 
-  def install
-    system "cargo", "install", "--path", ".", "--prefix", prefix
-  end
+   def install
+     system "cargo", "build", "--release"
+     bin.install "target/release/anin"
+   end
 
   def postinstall
     system bin/"anin", "install"
